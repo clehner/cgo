@@ -312,7 +312,11 @@ void add_link(char which, const char *name,
     link_t  *link;
     char    a = 0, b = 0;
 
-    if (! host || ! port || ! selector)
+    if (! host)
+        host = current_host;
+    if (! port)
+        port = current_port;
+    if (! selector)
         return; /* ignore incomplete selectors */
     link = calloc(1, sizeof(link_t));
     link->which = which;
